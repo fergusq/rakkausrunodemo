@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="fi">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Rakkausrunogeneraattori</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<style>
+		body {
+			background-color: azure;
+		}
+
+		h1 {
+			font-size: 4rem;
+		}
+
+		rt {
+			font-family: sans-serif;
+			font-size: 1rem;
+		}
+
+		blockquote {
+			border: 1px solid grey;
+			padding: 1rem;
+		}
+
+		blockquote > p:last-child {
+			margin-bottom: 0;
+		}
+
+		figure > blockquote {
+			margin-bottom: 0;
+		}
+
+		figure > figcaption {
+			font-size: 0.8rem;
+			font-style: italic;
+			margin-top: 0;
+		}
+
+		mark.generation {
+			background-color: aquamarine;
+		}
+
+		mark.input {
+			font-weight: bold;
+			background-color: rgb(253, 211, 133);
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="p-3">
+	
+		<div class="row">
+			<div class="col">
+				<div class="row" style="text-align: center;">
+					<h1>Rakkausrunogeneraattori</h1>
+					<div class="col">
+						<strong>Iikka Hauhio</strong><br>
+						iikka.hauhio@helsinki.fi<br>
+						Helsingin yliopisto						
+					</div>
+					<div class="col">
+						<strong>Hannu Toivonen</strong><br>
+						hannu.toivonen@helsinki.fi<br>
+						Helsingin yliopisto						
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<h2>Demo</h2>
+
+				<p>Demossa pääsee kokeilemaan eroottisten runojen generointia ja moderointimallia. Syötä runolle aihe ja tutki moderointimallin arviota siitä. Jos syöte hyväksytään, siitä generoidaan runo, jonka voi tulostaa mukaan.</p>
+
+				<p>Demo perustuu OpenAI-yhtiön omaan moderointimalliin ja GPT-3-kielimalliin. Demon on tehnyt Iikka Hauhio ja sen lähdekoodi on saatavilla täältä: https://github.com/fergusq/rakkausrunodemo</p>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="row">
+			<div class="col">
+				<h2>Kielimallit</h2>
+
+				<p>Runogeneraattori tuottaa runoja <strong>kielimallin</strong> avulla. Kielimalli toimii ennustamalla seuraavan sanan edellisten sanojen perusteella. Kun tätä toistetaan, kielimalli kasaa uuden tekstin sana sanalta.</p>
+
+				<blockquote class="font-monospace">
+					<ruby>
+						<mark>Tekoälyn käyttö opetuksessa on</mark> <rp>(</rp><rt>kehote</rt><rp>)</rp>
+						<mark class="generation">osoittautunut hyödylliseksi.</mark> <rp>(</rp><rt><span style="display:inline-block;">generoitu teksti</span></rt><rp>)</rp>
+					</ruby>
+				</blockquote>
+
+				<p>Kielimallille annettavaa alkutekstiä sanotaan <strong>kehotteeksi</strong>. Kehote voi sisältää ohjeita, tietoa, esimerkkejä ja käskyjä tekoälylle. Tekoälyohjelmissa kehote voi olla hyvinkin monimutkainen.</p>
+
+				<figure>
+					<blockquote class="font-monospace">
+						<p><mark>Tehtäväsi on kirjoittaa eroottinen runo. Runon on oltava kiihottava ja vihjaileva. Käytä ronskia kieltä vain, jos runon aiheessakin käytetään ronskia kieltä.</mark></p>
+						<ruby>
+							<mark>Runon aihe:</mark> <rp>(</rp><rt></rt><rp>)</rp>
+							<mark class="input">Ensirakkaus</mark> <rp>(</rp><rt><span style="display:inline-block;">käyttäjän syöte</span></rt><rp>)</rp>
+						</ruby>
+						<p><mark>Runon teksti:</mark> <mark class="generation">Oi rakkauteni, kuinka syvää<br>
+							on tunteemme, joka syttyy<br>
+							kuin tulipalo. Kiihkomme liekeissä<br>
+							jokaisen hetken, kun kosketamme.</mark></p>
+					</blockquote>
+					<figcaption>Rakkausrunogeneraattorille annettava kehote kokonaisuudessaan</figcaption>
+				</figure>
+
+				<p>Tässä demossa käytetään OpenAI-yhtiön kaupallista GPT-3-kielimallia.</p>
+			</div>
+			<div class="col">
+				<h2>Kielimalli tekee yleistyksiä</h2>
+
+				<p>Isot neuroverkkoihin perustuvat kielimallit oppivat tekstistä yleistyksiä. Kielimallin sisällä ei ole kopiota jokaisesta koulutuksessa käytetystä tekstistä, vaan sen sijaan malli on oppinut kaavamaisuuksia tekstistä ja käyttää niitä uuden tekstin luomiseen.</p>
+
+				<p>Koska kielimalli perustuu yleistyksiin, se on joustava ja voi soveltaa opittuja asioita uusissa konteksteissa. Toisaalta malli ei ole älykäs eikä ymmärrä tekstin merkitystä, joten se ei osaa arvioida, onko sen tuottama teksti järkevää tai totta. Koska kielimallissa on vain yleistyksiä eikä alkuperäistä tekstiä, se ei osaa nimetä lähteitä tuottamaansa tekstiin.</p>
+
+				<figure>
+					<blockquote class="font-monospace">
+						<p><mark>Kuinka kauan kestää ajaa pyörällä Hangosta Utsjoelle?</mark></p>
+						<p><mark class="generation">Kestää noin 45 minuuttia ajaa pyörällä Hangosta Utsjoelle.</mark></p>
+					</blockquote>
+					<figcaption>Kielimalli osaa vastata vakuuttavasti kaikkiin kysymyksiin vaikka se ei oikeasti tietäisi vastausta.</figcaption>
+				</figure>
+
+				<p>Koska kielimallien tuottamaan tekstiin ei voi luottaa, vaatii niiden käyttö <strong>tekoälylukutaitoa</strong>. Käyttäjän on kyettävä olemaan kriittinen ja ymmärrettävä tekoälyn rajoitteet.</p>
+			</div>
+			<div class="col">
+				<h2>Kielimallien vinoumat ja sisällönsuodatus</h2>
+
+				<p>Kielimallit on koulutettu Internetistä ladatulla tekstillä, jonka laatu vaihtelee. Osa tekstistä on <strong>vinoutunutta</strong> eli esimerkiksi rasistista tai seksististä. Kielimalli ei tiedä, mikä teksti on hyväksyttävää ja mikä ei, joten se voi tuottaa vinoutunutta tekstiä helposti.</p>
+
+				<figure>
+					<blockquote class="font-monospace">
+						<p><mark>Kirjoita 5 ensimmäisenä mieleen tulevaa adjektiivia kustakin sanasta: mies, nainen.</mark></p>
+						<p><mark class="generation">Mies: viriili, itsevarma, määrätietoinen, urhea, voimakas. </mark></p>
+						<p><mark class="generation">Nainen: herkkä, kaunis, itsenäinen, lämmin, viisas.</mark></p>
+					</blockquote>
+					<figcaption>Kielimallin näkemyksiä sukupuolesta.</figcaption>
+				</figure>
+
+				<p>Sisällönsuodatin on tekoäly, joka koettaa tunnistaa vinoutuneen tekstin ja estää sen tuottamisen. Sisällönsuodattimella voidaan pyrkiä estämään myös sopimaton, pornografinen ja väkivaltainen sisältö. Tässä demossa käytetään OpenAI-yhtiön moderointimallia.</p>
+
+				<p>Moderointimallit voivat kuitenkin olla itsekin vinoutuneita. Esimerkiksi tämän demon moderointimalli kieltää syötteen "Runo lesboista", mutta sallii syötteen "Runo heteroista". Sopimattomuus on voimakkaasti kulttuuri- ja tilanneriippuvaista, mutta moderointimalli ei ota tätä huomioon.</p>
+			</div>
+		</div>
+
+		<div style="text-align: center;"><img class="mx-auto" src="hylogo.png" width="40%"></div>
+		
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
